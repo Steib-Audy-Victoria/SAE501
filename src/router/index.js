@@ -38,7 +38,7 @@ const router = createRouter({
     {
       path: '/ajout',
       name: 'ajout',
-      component: () => import('../views/Montre/AjoutView.vue'),
+      component: () => import('../views/AjoutMontreView.vue'),
       beforeEnter: authGuard,
     },
     {
