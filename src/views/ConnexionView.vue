@@ -58,6 +58,8 @@ export default {
         })
         .then((response) => {
           console.log('Connexion réussie, ID utilisateur:', response.data.userID)
+          // Stocker le token dans le stockage local
+          localStorage.setItem('token', response.data.token)
         })
         .catch((error) => {
           console.error('Erreur lors de la connexion', error)

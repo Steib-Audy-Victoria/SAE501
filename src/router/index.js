@@ -1,6 +1,8 @@
 import HomeView from '../views/HomeView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { authGuard } from '../utils/routeGuards.js';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,6 +29,18 @@ const router = createRouter({
       path: '/connexion',
       name: 'connexion',
       component: () => import('../views/ConnexionView.vue')
+    },
+    {
+      path: '/configurations',
+      name: 'configurations',
+      component: () => import('../views/ConfigurationsView.vue'),
+      beforeEnter: authGuard,
+    },
+    {
+      path: '/deconnection',
+      name: 'deconnection',
+      component: () => import('../views/DeconnectionView.vue'),
+      beforeEnter: authGuard,
     }
   ]
 })
