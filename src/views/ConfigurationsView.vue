@@ -2,16 +2,55 @@
   <div>
     <h1>Gestion des Configurations</h1>
     <form @submit.prevent="creerConfiguration">
-      <!-- Ajoutez des champs pour chaque composant de la montre -->
-      <label>Montre:</label>
-      <select v-model="montreID">
-        <!-- Liste des montres depuis l'API -->
-        <option v-for="montre in montres" :key="montre.ID" :value="montre.ID">
-          {{ montre.NomMontre }}
+      <label>Boitier:</label>
+      <select v-model="BoitierID">
+        <option v-for="boitier in Boitiers" :key="boitier.BoitierID" :value="boitier.BoitierID">
+          {{ boitier.NomBoitier }}
         </option>
       </select>
 
-      <!-- ... Ajoutez des champs pour les autres composants ... -->
+      <label>Texture du Boîtier:</label>
+      <select v-model="TextureBoitierID">
+        <option
+          v-for="textureBoitier in TexturesBoitier"
+          :key="textureBoitier.TextureBoitierID"
+          :value="textureBoitier.TextureBoitierID"
+        >
+          {{ textureBoitier.NomTexture }}
+        </option>
+      </select>
+
+      <label>Pierre:</label>
+      <select v-model="PierreID">
+        <option v-for="pierre in Pierres" :key="pierre.PierreID" :value="pierre.PierreID">
+          {{ pierre.NomPierre }}
+        </option>
+      </select>
+
+      <label>Bracelet:</label>
+      <select v-model="BraceletID">
+        <option
+          v-for="bracelet in Bracelets"
+          :key="bracelet.BraceletID"
+          :value="bracelet.BraceletID"
+        >
+          {{ bracelet.NomBracelet }}
+        </option>
+      </select>
+
+      <label>Texture du Bracelet:</label>
+      <select v-model="TextureBraceletID">
+        <option
+          v-for="textureBracelet in TexturesBracelet"
+          :key="textureBracelet.TextureBraceletID"
+          :value="textureBracelet.TextureBraceletID"
+        >
+          {{ textureBracelet.NomTexture }}
+        </option>
+      </select>
+
+      <label>Prix Total:</label>
+      <input type="text" v-model="PrixTotal" />
 
       <button type="submit">Créer Configuration</button>
     </form>
@@ -24,18 +63,27 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      montreID: null,
-      // ... Ajoutez des variables pour les autres composants ...
-      montres: [] // Liste des montres pour le select
+      BoitierID: null,
+      PierreID: null,
+      BraceletID: null,
+      PrixTotal: null,
+      TextureBoitierID: null,
+      TextureBraceletID: null,
+      Boitiers: [],
+      Pierres: [],
+      Bracelets: [],
+      TexturesBoitier: [],
+      TexturesBracelet: []
     }
   },
   methods: {
     creerConfiguration() {
-      // Appeler l'API pour créer une nouvelle configuration
       axios
         .post('http://localhost:4000/configurations', {
-          MontreID: this.montreID
-          // ... Ajoutez les autres composants ici ...
+          BoitierID: this.BoitierID,
+          PierreID: this.PierreID,
+          BraceletID: this.BraceletID,
+          PrixTotal: this.PrixTotal
         })
         .then((response) => {
           console.log('Configuration créée, ID:', response.data.configurationID)
@@ -44,20 +92,62 @@ export default {
           console.error('Erreur lors de la création de la configuration', error)
         })
     },
-    // Charger la liste des montres lors de la création du composant
-    chargerMontres() {
+    chargerComposants() {
+      // Charger la liste des Boitiers
       axios
-        .get('http://localhost:4000/montres')
+        .get('http://localhost:4000/boitiers')
         .then((response) => {
-          this.montres = response.data
+          this.Boitiers = response.data
         })
         .catch((error) => {
-          console.error('Erreur lors du chargement des montres', error)
+          console.error('Erreur lors du chargement des Boitiers', error)
+        })
+
+      // Charger la liste des Pierres
+      axios
+        .get('http://localhost:4000/pierres')
+        .then((response) => {
+          this.Pierres = response.data
+        })
+        .catch((error) => {
+          console.error('Erreur lors du chargement des Pierres', error)
+        })
+
+      // Charger la liste des Bracelets
+      axios
+        .get('http://localhost:4000/bracelets')
+        .then((response) => {
+          this.Bracelets = response.data
+        })
+        .catch((error) => {
+          console.error('Erreur lors du chargement des Bracelets', error)
+        })
+    },
+    chargerTextures() {
+      // Charger la liste des Textures du Boîtier
+      axios
+        .get('http://localhost:4000/texturesBoitier')
+        .then((response) => {
+          this.TexturesBoitier = response.data
+        })
+        .catch((error) => {
+          console.error('Erreur lors du chargement des Textures du Boîtier', error)
+        })
+
+      // Charger la liste des Textures du Bracelet
+      axios
+        .get('http://localhost:4000/texturesBracelet')
+        .then((response) => {
+          this.TexturesBracelet = response.data
+        })
+        .catch((error) => {
+          console.error('Erreur lors du chargement des Textures du Bracelet', error)
         })
     }
   },
   mounted() {
-    this.chargerMontres()
+    this.chargerComposants()
+    this.chargerTextures()
   }
 }
 </script>
