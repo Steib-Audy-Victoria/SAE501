@@ -40,11 +40,11 @@ export default {
     inscrire() {
       axios
         .post('http://localhost:4000/inscription', {
-          Nom: this.inscriptionNom,
+          NomUser: this.inscriptionNom,
           MotDePasse: this.inscriptionMotDePasse
         })
         .then((response) => {
-          console.log('Inscription réussie, ID utilisateur:', response.data.userID)
+          console.log('Inscription réussie, ID utilisateur:', response.data.UserID)
         })
         .catch((error) => {
           console.error("Erreur lors de l'inscription", error)
@@ -53,11 +53,11 @@ export default {
     connecter() {
       axios
         .post('http://localhost:4000/connexion', {
-          Nom: this.connexionNom,
+          NomUser: this.connexionNom,
           MotDePasse: this.connexionMotDePasse
         })
         .then((response) => {
-          console.log('Connexion réussie, ID utilisateur:', response.data.userID)
+          console.log('Connexion réussie, ID utilisateur:', response.data.UserID)
           // Stocker le token dans le stockage local
           localStorage.setItem('token', response.data.token)
         })
