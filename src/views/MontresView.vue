@@ -2,7 +2,8 @@
   <h1>Liste des Montres</h1>
 
   <li v-for="montre in montres" :key="montre.ID">
-    {{ montre.NomMontre }} - {{ montre.PrixMontre }}
+    {{ montre.MontreID }} - {{ montre.UserID }} - {{ montre.BoitierID }} - {{ montre.PierreID }} -
+    {{ montre.BraceletID }} - {{ montre.PrixTotal }} €
   </li>
 </template>
 <script>
