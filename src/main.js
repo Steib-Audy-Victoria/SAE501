@@ -3,6 +3,7 @@ import router from './router'
 import { createApp } from 'vue'
 import '@/scss/main.scss' 
 
+
 const app = createApp(App)
 
 app.use(router)

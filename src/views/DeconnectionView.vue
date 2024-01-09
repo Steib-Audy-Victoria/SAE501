@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { deconnecter } from '../utils/authService'
+import { deconnecter } from '../utils/connexion.js'
 
 export default {
   methods: {

@@ -148,6 +148,8 @@ export default {
   },
   methods: {
     addWatch() {
+      // Vérifier si l'utilisateur est connecté avant d'ajouter une montre
+    if (/* Vérifiez ici si l'utilisateur est connecté */) {
       axios
         .post('http://localhost:4000/montre/ajout', {
           NomMontre: this.newNomMontre,
@@ -165,7 +167,11 @@ export default {
         .catch((error) => {
           console.error("Erreur lors de l'ajout de la montre", error.response.data.error)
         })
+    } else {
+      // Gérer le cas où l'utilisateur n'est pas connecté (afficher un message, rediriger, etc.)
+      console.log('Utilisateur non connecté. Veuillez vous connecter pour ajouter une montre.');
     }
+  }
   }
 }
 </script>

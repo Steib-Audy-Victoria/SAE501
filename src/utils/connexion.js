@@ -9,3 +9,7 @@ export const authGuard = (to, from, next) => {
     next();
   }
 };
+
+export function deconnecter() {
+  localStorage.removeItem('token');
+}

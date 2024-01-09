@@ -1,8 +1,11 @@
 <template>
   <h1>Liste des Montres</h1>
 
+  <br />
+
   <li v-for="montre in montres" :key="montre.MontreID">
     <p><strong>ID Montre:</strong> {{ montre.MontreID }}</p>
+    <p><strong>Nom de l'utilisateur qui la créer :</strong> {{ montre.NomUser }}</p>
     <p><strong>Nom Montre:</strong> {{ montre.NomMontre }}</p>
     <p><strong>Nom Boitier:</strong> {{ montre.NomBoitier }}</p>
     <p><strong>Nom Texture du Boitier:</strong> {{ montre.TextureBoitier }}</p>
@@ -10,7 +13,6 @@
     <p><strong>Nom Bracelet:</strong> {{ montre.NomBracelet }}</p>
     <p><strong>Nom Texture du Bracelet:</strong> {{ montre.TextureBracelet }}</p>
     <p><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</p>
-    <RouterLink :to="`/montre/${montre.MontreID}`">Voir la montre</RouterLink>
     <hr />
   </li>
 </template>

@@ -1,7 +1,7 @@
 import HomeView from '../views/HomeView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { authGuard } from '../utils/routeGuards.js';
+import { authGuard } from '../utils/connexion';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,14 +21,21 @@ const router = createRouter({
     },
 
     {
+      path: '/listeMontres',
+      name: 'listeMontres',
+      component: () => import('../views/ListeMontresView.vue'),
+    },
+    {
       path: '/montres',
       name: 'montres',
-      component: () => import('../views/MontresView.vue')
+      component: () => import('../views/MontresView.vue'),
+      beforeEnter: authGuard 
     },
     {
       path: '/montre/:id',
       name: 'montre',
-      component: () => import('../views/MontreView.vue')
+      component: () => import('../views/MontreView.vue'),
+      beforeEnter: authGuard
     },
     {
       path: '/connexion',
