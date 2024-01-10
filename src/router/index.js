@@ -38,15 +38,15 @@ const router = createRouter({
       beforeEnter: authGuard
     },
     {
-      path: '/connexion',
-      name: 'connexion',
-      component: () => import('../views/ConnexionView.vue')
-    },
-    {
       path: '/ajout',
       name: 'ajout',
       component: () => import('../views/AjoutMontreView.vue'),
       beforeEnter: authGuard,
+    },
+    {
+      path: '/connexion',
+      name: 'connexion',
+      component: () => import('../views/ConnexionView.vue')
     },
     {
       path: '/deconnection',

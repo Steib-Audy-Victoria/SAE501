@@ -1,0 +1,56 @@
+<script setup></script>
+
+<template>
+  <div class="Footer">
+    <div class="Footer__menu">
+      <ul>
+        <li><RouterLink to="/listeMontres">Nos Modèles de montres</RouterLink></li>
+        <li><RouterLink to="/connexion">S'inscrire ou se connecter</RouterLink></li>
+        <li><RouterLink to="/deconnection">Se déconnecter</RouterLink></li>
+        <li><RouterLink to="/ajout">Personaliser une montre</RouterLink></li>
+        <li>
+          <RouterLink to="/montres">Afficher la liste de mes montres personnaliser</RouterLink>
+        </li>
+        <li><RouterLink to="/panier">Mon panier</RouterLink></li>
+      </ul>
+    </div>
+    <div class="Footer__content">
+      <p>© 2024 - Tous droits réservés</p>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $grisClair;
+  color: $noir;
+  padding: 2rem;
+  margin-top: 2rem;
+
+  &__menu {
+    ul {
+      list-style: none;
+
+      li {
+        color: $noir;
+        text-decoration: none;
+
+        &:hover {
+          color: $noir;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__content {
+    p {
+      text-decoration: none;
+    }
+  }
+}
+</style>

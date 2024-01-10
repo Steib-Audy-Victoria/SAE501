@@ -31,11 +31,11 @@
     h1 {
       font-size: 2rem;
       font-weight: 700;
-      color: #000;
+      color: $noir;
       text-decoration: none;
 
       &:hover {
-        color: #000;
+        color: $noir;
         text-decoration: underline;
         cursor: pointer;
       }
@@ -51,11 +51,11 @@
         margin-left: 2rem;
         font-size: 1.2rem;
         font-weight: 500;
-        color: #000;
+        color: $noir;
         text-decoration: none;
 
         &:hover {
-          color: #000;
+          color: $noir;
           text-decoration: underline;
           cursor: pointer;
         }
@@ -68,7 +68,7 @@
   border: 0;
   height: 2px;
   width: 95%;
-  background: #000;
+  background: $noir;
   border-radius: 10px;
 }
 </style>
