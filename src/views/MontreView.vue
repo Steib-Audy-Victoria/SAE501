@@ -89,6 +89,10 @@
 
         <button type="submit">Enregistrer les modifications</button>
       </form>
+
+      <br />
+
+      <button type="button" @click="deleteWatch">Supprimer la montre</button>
     </div>
 
     <div v-else>
@@ -206,6 +210,23 @@ export default {
         })
         .catch((error) => {
           console.error('Erreur lors de la mise à jour de la montre', error)
+        })
+    },
+
+    deleteWatch() {
+      // Récupérer l'ID de la montre à partir des paramètres de l'URL
+      const MontreId = this.$route.params.id
+
+      // Utiliser une requête DELETE pour supprimer la montre
+      axios
+        .delete(`http://localhost:4000/montre/${MontreId}/suppr`)
+        .then((response) => {
+          console.log(response.data.message)
+          // Rediriger l'utilisateur vers la liste des montres après la suppression
+          this.$router.push('/montres')
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la suppression de la montre', error)
         })
     }
   }
