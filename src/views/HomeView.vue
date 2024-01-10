@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import MyHeader from '@/components/MyHeader.vue'
+</script>
 
 <template>
-  <h1>Hello</h1>
+  <MyHeader />
 </template>
 
 <style lang="scss"></style>
