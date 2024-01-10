@@ -1,12 +1,7 @@
-<script setup>
-import MyHeader from '@/components/MyHeader.vue'
-import MyFooter from '@/components/MyFooter.vue'
-</script>
+<script setup></script>
 
 <template>
-  <MyHeader />
-
-  <section class="presentation">
+  <div class="presentation">
     <h2 class="presentation__sstitre">Grâce à TiK•TaK personnaliser votre montre !</h2>
     <p class="presentation__text">
       Chez TiK•TaK, nous croyons que chaque montre devrait être aussi unique que la personne qui la
@@ -15,9 +10,7 @@ import MyFooter from '@/components/MyFooter.vue'
       montres personnalisables et commencez à créer la montre parfaite qui accompagnera chaque
       moment de votre vie.
     </p>
-  </section>
-
-  <MyFooter />
+  </div>
 </template>
 
 <style lang="scss">

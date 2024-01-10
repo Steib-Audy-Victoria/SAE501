@@ -4,7 +4,8 @@ import { computed } from 'vue'
 const props = defineProps({
   size: String,
   variant: String,
-  color: String
+  color: String,
+  textTransform: String
 })
 
 const className = computed(() => ({
@@ -13,7 +14,10 @@ const className = computed(() => ({
   ' -small': props.size === 'small',
   ' -rouge': props.color === 'rouge',
   ' -bordeaux': props.color === 'bordeaux',
-  ' -grisFonce': props.color === 'grisFonce'
+  ' -grisFonce': props.color === 'grisFonce',
+  ' -uppercase': props.textTransform === 'uppercase',
+  ' -capitalize': props.textTransform === 'capitalize',
+  ' -lowercase': props.textTransform === 'lowercase'
 }))
 </script>
 <template>
@@ -32,7 +36,6 @@ const className = computed(() => ({
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 700;
-  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
@@ -58,12 +61,35 @@ const className = computed(() => ({
   // background
   &.-rouge {
     background-color: $rouge;
+
+    &:hover {
+      background-color: $blanc;
+    }
   }
   &.-bordeaux {
     background-color: $bordeaux;
+
+    &:hover {
+      background-color: $blanc;
+    }
   }
   &.-grisFonce {
     background-color: $grisFonce;
+
+    &:hover {
+      background-color: $blanc;
+    }
+  }
+
+  // text
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+  &.-capitalize {
+    text-transform: capitalize;
+  }
+  &.-lowercase {
+    text-transform: lowercase;
   }
 }
 </style>

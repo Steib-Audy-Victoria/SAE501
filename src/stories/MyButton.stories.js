@@ -19,7 +19,11 @@ export default {
       control: "select",
       options: ['black', 'rouge', 'bordeaux', 'grisFonce']
     },
-  }
+    textTransform : {
+      control: "select",
+      options: ['none', 'uppercase', 'lowercase', 'capitalize']
+    },
+  } 
 }
 
 export const BlackButton = {
@@ -38,6 +42,7 @@ export const BlackButton = {
     size: "normal",
     variant: "default",
     color: "black",
+    textTransform: "uppercase"
   }
 }
 
@@ -46,23 +51,26 @@ export const RedButton = {
   args: {
     size: "normal",
     variant: "default",
-    color: "rouge"
+    color: "rouge",
+    textTransform: "none"
   }
 }
 export const BordeauxButton = {
   ...BlackButton,
   args: {
     size: "normal",
-    variant: "default",
-    color: "bordeaux"
+    variant: "rounded",
+    color: "bordeaux",
+    textTransform: "none"
   }
 }
 export const GrisButton = {
   ...BlackButton,
   args: {
     size: "normal",
-    variant: "default",
-    color: "grisFonce"
+    variant: "round",
+    color: "grisFonce",
+    textTransform: "none"
   }
 }
 
