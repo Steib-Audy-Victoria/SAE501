@@ -24,6 +24,7 @@ const router = createRouter({
       path: '/listeMontres',
       name: 'listeMontres',
       component: () => import('../views/ListeMontresView.vue'),
+      beforeEnter: authGuard 
     },
     {
       path: '/montres',

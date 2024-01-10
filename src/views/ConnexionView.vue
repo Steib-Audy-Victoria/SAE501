@@ -69,6 +69,7 @@ export default {
           console.log('Connexion réussie, ID utilisateur:', response.data.UserID)
           // Stocker le token dans le stockage local
           localStorage.setItem('token', response.data.token)
+          console.log('Token:', response.data.token)
         })
         .catch((error) => {
           this.connexionMessage = 'Erreur lors de la connexion'
