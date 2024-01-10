@@ -144,17 +144,25 @@ export default {
   methods: {
     addWatch() {
       axios
-        .post('http://localhost:4000/montre/ajout', {
-          NomMontre: this.newNomMontre,
-          BoitierID: this.newBoitierID,
-          TextureBoitierID: this.newTextureBoitierID,
-          PierreID: this.newPierreID,
-          BraceletID: this.newBraceletID,
-          TextureBraceletID: this.newTextureBraceletID
-        })
+        .post(
+          'http://localhost:4000/montre/ajout',
+          {
+            NomMontre: this.newNomMontre,
+            BoitierID: this.newBoitierID,
+            TextureBoitierID: this.newTextureBoitierID,
+            PierreID: this.newPierreID,
+            BraceletID: this.newBraceletID,
+            TextureBraceletID: this.newTextureBraceletID
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem('token')
+            }
+          }
+        )
         .then((response) => {
           console.log(response.data.message)
-          // Rediriger l'utilisateur vers une autre page après l'ajout réussi
+          // Rediriger l'utilisateur vers la page des montres qu'il a configuré après l'ajout réussi
           this.$router.push('/montres')
         })
         .catch((error) => {
