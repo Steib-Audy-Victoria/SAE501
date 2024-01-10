@@ -54,7 +54,14 @@ const router = createRouter({
       name: 'deconnection',
       component: () => import('../views/DeconnectionView.vue'),
       beforeEnter: authGuard,
-    }
+    },
+    {
+      path: '/panier',
+      name: 'panier',
+      component: () => import('../views/PanierUtilisateurView.vue'),
+      beforeEnter: authGuard,
+    },
+
   ]
 })
 
