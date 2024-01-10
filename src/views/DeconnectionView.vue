@@ -2,6 +2,7 @@
   <div>
     <h1>Déconnections</h1>
     <button @click="deconnecter">Se déconnecter</button>
+    <p>{{ deconnexionMessage }}</p>
     <!-- Reste du contenu de la page -->
   </div>
 </template>
@@ -10,11 +11,21 @@
 import { deconnecter } from '../utils/connexion.js'
 
 export default {
+  data() {
+    return {
+      deconnexionMessage: ''
+    }
+  },
   methods: {
     deconnecter() {
+      // Appel de la fonction deconnexion
       deconnecter()
-      // Redirige l'utilisateur vers la page de connexion ou toute autre page appropriée
-      this.$router.push('/connexion')
+
+      // Mise à jour de la propriété deconnexionMessage
+      this.deconnexionMessage = 'Vous vous êtes déconnecté avec succès.'
+
+      // Redirige l'utilisateur vers la page d'accueil
+      this.$router.push('/')
     }
     // Reste des méthodes du composant
   }

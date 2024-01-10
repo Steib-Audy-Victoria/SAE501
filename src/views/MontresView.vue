@@ -3,6 +3,7 @@
 
   <li v-for="montre in montres" :key="montre.MontreID">
     <p><strong>ID Montre:</strong> {{ montre.MontreID }}</p>
+    <p><strong>Nom de l'utilisateur qui la créer :</strong> {{ montre.NomUser }}</p>
     <p><strong>Nom Montre:</strong> {{ montre.NomMontre }}</p>
     <p><strong>Nom Boitier:</strong> {{ montre.NomBoitier }}</p>
     <p><strong>Nom Texture du Boitier:</strong> {{ montre.TextureBoitier }}</p>

@@ -78,7 +78,6 @@
 
 <script>
 import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -105,7 +104,6 @@ export default {
       .catch((error) => {
         console.error('Erreur lors de la récupération des boîtiers', error)
       })
-
     // Récupérer la liste des textures de boîtiers
     axios
       .get('http://localhost:4000/texturesBoitier')
@@ -115,7 +113,6 @@ export default {
       .catch((error) => {
         console.error('Erreur lors de la récupération des textures de boîtiers', error)
       })
-
     // Récupérer la liste des pierres
     axios
       .get('http://localhost:4000/pierres')
@@ -125,7 +122,6 @@ export default {
       .catch((error) => {
         console.error('Erreur lors de la récupération des pierres', error)
       })
-
     // Récupérer la liste des bracelets
     axios
       .get('http://localhost:4000/bracelets')
@@ -135,7 +131,6 @@ export default {
       .catch((error) => {
         console.error('Erreur lors de la récupération des bracelets', error)
       })
-
     // Récupérer la liste des textures de bracelets
     axios
       .get('http://localhost:4000/texturesBracelet')
@@ -148,8 +143,6 @@ export default {
   },
   methods: {
     addWatch() {
-      // Vérifier si l'utilisateur est connecté avant d'ajouter une montre
-    if (/* Vérifiez ici si l'utilisateur est connecté */) {
       axios
         .post('http://localhost:4000/montre/ajout', {
           NomMontre: this.newNomMontre,
@@ -167,11 +160,7 @@ export default {
         .catch((error) => {
           console.error("Erreur lors de l'ajout de la montre", error.response.data.error)
         })
-    } else {
-      // Gérer le cas où l'utilisateur n'est pas connecté (afficher un message, rediriger, etc.)
-      console.log('Utilisateur non connecté. Veuillez vous connecter pour ajouter une montre.');
     }
-  }
   }
 }
 </script>
