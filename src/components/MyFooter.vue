@@ -7,7 +7,7 @@
         <li><RouterLink class="link" to="/listeMontres">Nos Modèles de montres</RouterLink></li>
         <li><RouterLink class="link" to="/connexion">S'inscrire ou se connecter</RouterLink></li>
         <li><RouterLink class="link" to="/deconnection">Se déconnecter</RouterLink></li>
-        <li><RouterLink class="link" to="/ajout">Personaliser une montre</RouterLink></li>
+        <li><RouterLink class="link" to="/ajout">Personnaliser une montre</RouterLink></li>
         <li>
           <RouterLink class="link" to="/montres"
             >Afficher la liste de mes montres personnaliser</RouterLink

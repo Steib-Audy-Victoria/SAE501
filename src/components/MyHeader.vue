@@ -10,7 +10,7 @@
       <div class="Header__menu">
         <ul>
           <li><RouterLink class="link" to="/listeMontres">Nos Modèles</RouterLink></li>
-          <li><RouterLink class="link" to="/ajout">Personaliser</RouterLink></li>
+          <li><RouterLink class="link" to="/ajout">Personnaliser</RouterLink></li>
           <li><RouterLink class="link" to="/connexion">Connexion</RouterLink></li>
         </ul>
       </div>
