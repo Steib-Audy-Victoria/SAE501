@@ -1,23 +1,31 @@
+<script setup>
+import MyButton from '@/components/elements/MyButton.vue'
+</script>
 <template>
-  <h1>Liste des Montres</h1>
+  <div class="ListeMontres">
+    <h3 class="ListeMontres__title">Liste des Montres</h3>
 
-  <li v-for="montre in montres" :key="montre.MontreID">
-    <p><strong>ID Montre:</strong> {{ montre.MontreID }}</p>
-    <p><strong>Nom de l'utilisateur qui la créer :</strong> {{ montre.NomUser }}</p>
-    <p><strong>Nom Montre:</strong> {{ montre.NomMontre }}</p>
-    <p><strong>Nom Boitier:</strong> {{ montre.NomBoitier }}</p>
-    <p><strong>Nom Texture du Boitier:</strong> {{ montre.TextureBoitier }}</p>
-    <p><strong>Nom Pierre:</strong> {{ montre.NomPierre }}</p>
-    <p><strong>Nom Bracelet:</strong> {{ montre.NomBracelet }}</p>
-    <p><strong>Nom Texture du Bracelet:</strong> {{ montre.TextureBracelet }}</p>
-    <p><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</p>
-    <br />
+    <ul class="ListeMontres__liste" v-for="montre in montres" :key="montre.MontreID">
+      <!-- <li><strong>ID Montre:</strong> {{ montre.MontreID }}</li> -->
+      <li><strong>Nom Montre :</strong> {{ montre.NomMontre }}</li>
+      <li><strong>Nom de l'utilisateur qui la créer :</strong> {{ montre.NomUser }}</li>
+      <li><strong>Nom Boitier :</strong> {{ montre.NomBoitier }}</li>
+      <li><strong>Nom Texture du Boitier :</strong> {{ montre.TextureBoitier }}</li>
+      <li><strong>Nom Pierre :</strong> {{ montre.NomPierre }}</li>
+      <li><strong>Nom Bracelet :</strong> {{ montre.NomBracelet }}</li>
+      <li><strong>Nom Texture du Bracelet :</strong> {{ montre.TextureBracelet }}</li>
+      <li><strong>Prix Total :</strong> {{ montre.PrixTotal }} €</li>
 
-    <!-- Ajout du bouton "Ajouter au Panier" -->
-    <button @click="ajouterAuPanier(montre.MontreID)">Ajouter au Panier</button>
-
-    <hr />
-  </li>
+      <!-- Ajout du bouton "Ajouter au Panier" -->
+      <MyButton
+        class="ListeMontres__liste-button"
+        size="small"
+        variant="rounded"
+        @click="ajouterAuPanier(montre.MontreID)"
+        >Ajouter au Panier</MyButton
+      >
+    </ul>
+  </div>
 </template>
 <script>
 import axios from 'axios'
@@ -75,3 +83,37 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.ListeMontres {
+  &__title {
+    color: $noir;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem;
+  }
+
+  &__liste {
+    list-style: none;
+    padding: 1rem;
+    margin: 1rem 2rem;
+    border: 1px solid $gris;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    li {
+      margin-bottom: 5px;
+
+      strong {
+        font-weight: 500;
+      }
+    }
+
+    &-button {
+      margin: 1rem O;
+    }
+  }
+}
+</style>
