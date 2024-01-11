@@ -61,6 +61,13 @@ const router = createRouter({
       beforeEnter: authGuard,
     },
 
+    // TEST
+    {
+      path: '/three',
+      name: 'three',
+      component: () => import('../components/ThreeJS.vue'),
+    },
+
   ]
 })
 
