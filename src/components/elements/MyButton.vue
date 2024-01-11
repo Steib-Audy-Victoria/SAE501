@@ -22,7 +22,7 @@ const className = computed(() => ({
 </script>
 <template>
   <button class="button" :class="className">
-    <RouterLink to="/">
+    <RouterLink class="button__link" to="/">
       <slot></slot>
     </RouterLink>
   </button>
@@ -38,6 +38,15 @@ const className = computed(() => ({
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+
+  &__link {
+    color: $blanc;
+    text-decoration: none;
+
+    &:hover {
+      color: $noir;
+    }
+  }
 
   &:hover {
     background-color: $blanc;
@@ -61,24 +70,12 @@ const className = computed(() => ({
   // background
   &.-rouge {
     background-color: $rouge;
-
-    &:hover {
-      background-color: $blanc;
-    }
   }
   &.-bordeaux {
     background-color: $bordeaux;
-
-    &:hover {
-      background-color: $blanc;
-    }
   }
   &.-grisFonce {
     background-color: $grisFonce;
-
-    &:hover {
-      background-color: $blanc;
-    }
   }
 
   // text

@@ -4,14 +4,16 @@
   <div class="Footer">
     <div class="Footer__menu">
       <ul>
-        <li><RouterLink to="/listeMontres">Nos Modèles de montres</RouterLink></li>
-        <li><RouterLink to="/connexion">S'inscrire ou se connecter</RouterLink></li>
-        <li><RouterLink to="/deconnection">Se déconnecter</RouterLink></li>
-        <li><RouterLink to="/ajout">Personaliser une montre</RouterLink></li>
+        <li><RouterLink class="link" to="/listeMontres">Nos Modèles de montres</RouterLink></li>
+        <li><RouterLink class="link" to="/connexion">S'inscrire ou se connecter</RouterLink></li>
+        <li><RouterLink class="link" to="/deconnection">Se déconnecter</RouterLink></li>
+        <li><RouterLink class="link" to="/ajout">Personaliser une montre</RouterLink></li>
         <li>
-          <RouterLink to="/montres">Afficher la liste de mes montres personnaliser</RouterLink>
+          <RouterLink class="link" to="/montres"
+            >Afficher la liste de mes montres personnaliser</RouterLink
+          >
         </li>
-        <li><RouterLink to="/panier">Mon panier</RouterLink></li>
+        <li><RouterLink class="link" to="/panier">Mon panier</RouterLink></li>
       </ul>
     </div>
     <div class="Footer__content">
@@ -39,7 +41,7 @@
         text-decoration: none;
 
         &:hover {
-          color: $noir;
+          color: $bordeaux;
           text-decoration: underline;
           cursor: pointer;
         }

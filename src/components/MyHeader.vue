@@ -4,14 +4,14 @@
   <div>
     <div class="Header">
       <div class="Header__Titre">
-        <h1><RouterLink to="/">Tik•TaK</RouterLink></h1>
+        <h1><RouterLink class="link" to="/">Tik•TaK</RouterLink></h1>
       </div>
 
       <div class="Header__menu">
         <ul>
-          <li><RouterLink to="/listeMontres">Nos Modèles</RouterLink></li>
-          <li><RouterLink to="/ajout">Personaliser</RouterLink></li>
-          <li><RouterLink to="/connexion">Connexion</RouterLink></li>
+          <li><RouterLink class="link" to="/listeMontres">Nos Modèles</RouterLink></li>
+          <li><RouterLink class="link" to="/ajout">Personaliser</RouterLink></li>
+          <li><RouterLink class="link" to="/connexion">Connexion</RouterLink></li>
         </ul>
       </div>
     </div>
@@ -35,7 +35,7 @@
       text-decoration: none;
 
       &:hover {
-        color: $noir;
+        color: $rouge;
         text-decoration: underline;
         cursor: pointer;
       }
@@ -55,7 +55,7 @@
         text-decoration: none;
 
         &:hover {
-          color: $noir;
+          color: $bordeaux;
           text-decoration: underline;
           cursor: pointer;
         }
