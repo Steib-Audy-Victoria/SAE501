@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref, toRefs, onMounted, onBeforeUnmount } from 'vue'
+import { ref, toRefs, onMounted, onUpdated, onBeforeUnmount } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 import * as THREE from 'three'
@@ -96,7 +96,7 @@ function onLoaded(collada) {
     `/images/background_${proprietes.TextureBoitier.value}.png`
   )
 
-  Boitier.material = new THREE.MeshBasicMaterial({
+  Boitier.material[1] = new THREE.MeshBasicMaterial({
     map: TextureBoitier
   })
 
@@ -176,6 +176,10 @@ var onError = function (data) {
 onMounted(() => {
   initScene()
   animate()
+})
+
+onUpdated(() => {
+  initScene()
 })
 
 onBeforeUnmount(() => {

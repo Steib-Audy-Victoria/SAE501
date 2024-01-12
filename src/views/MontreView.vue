@@ -25,7 +25,13 @@
       <form @submit.prevent="updateWatch">
         <!-- Champ pour le nom de la montre-->
         <label for="NomMontre">Nouveau Nom de la Montre :</label>
-        <input v-model="NomMontre" type="text" name="NomMontre" id="NomMontre" required />
+        <input
+          v-model="montrePreview.NomMontre"
+          type="text"
+          name="NomMontre"
+          id="NomMontre"
+          required
+        />
 
         <br />
 
@@ -61,20 +67,6 @@
             {{ p.NomPierre }}
           </option>
         </select>
-
-        <br />
-
-        <!-- Champ pour le bracelet
-        <label for="BraceletID">Bracelet :</label>
-        <select v-model="newBraceletID" >
-          <option
-            v-for="bracelet in bracelets"
-            :key="bracelet.BraceletID"
-            :value="bracelet.BraceletID"
-          >
-            {{ bracelet.NomBracelet }}
-          </option>
-        </select> -->
 
         <br />
 
@@ -131,39 +123,9 @@ const TextureBoitier = ref([])
 const NomPierre = ref([])
 const TextureBracelet = ref([])
 
-const updateWatch = () => {
-  axios
-    .put(`http://localhost:4000/montre/${MontreId.value}/modif`, {
-      NomMontre: NomMontre.value,
-      BoitierID: montrePreview.FormeBoitier,
-      TextureBoitierID: montrePreview.TextureBoitier,
-      PierreID: montrePreview.NomPierre,
-      TextureBraceletID: montrePreview.TextureBracelet
-    })
-    .then((response) => {
-      console.log(response.data.message)
-    })
-    .catch((error) => {
-      console.error('Erreur lors de la mise à jour de la montre', error)
-    })
-}
-
-const deleteWatch = () => {
-  axios
-    .delete(`http://localhost:4000/montre/${MontreId.value}/suppr`)
-    .then((response) => {
-      console.log(response.data.message)
-      // Rediriger l'utilisateur vers la liste des montres après la suppression
-      router.push('/montres')
-    })
-    .catch((error) => {
-      console.error('Erreur lors de la suppression de la montre', error)
-    })
-}
-
 const getMontreDetails = () => {
   axios
-    .get(`http://localhost:4000/montre/${MontreId.value}`)
+    .get(`http://localhost:4000/montre/${route.params.id}`)
     .then((response) => {
       if (response.data.length > 0) {
         montre.value = response.data[0]
@@ -210,17 +172,6 @@ const getPierres = () => {
     })
 }
 
-// const getBracelets = () => {
-//   axios
-//     .get('http://localhost:4000/bracelets')
-//     .then((response) => {
-//       bracelets.value = response.data
-//     })
-//     .catch((error) => {
-//       console.error('Erreur lors de la récupération des bracelets', error)
-//     })
-// }
-
 const getTexturesBracelet = () => {
   axios
     .get('http://localhost:4000/texturesBracelet')
@@ -232,6 +183,36 @@ const getTexturesBracelet = () => {
     })
 }
 
+const updateWatch = () => {
+  axios
+    .put(`http://localhost:4000/montre/${route.params.id}/modif`, {
+      NomMontre: NomMontre.value,
+      BoitierID: montrePreview.value,
+      TextureBoitierID: montrePreview.value,
+      PierreID: montrePreview.value,
+      TextureBraceletID: montrePreview.value
+    })
+    .then((response) => {
+      console.log(response.data.message)
+    })
+    .catch((error) => {
+      console.error('Erreur lors de la mise à jour de la montre', error)
+    })
+}
+
+const deleteWatch = () => {
+  axios
+    .delete(`http://localhost:4000/montre/${route.params.id}/suppr`)
+    .then((response) => {
+      console.log(response.data.message)
+      // Rediriger l'utilisateur vers la liste des montres après la suppression
+      router.push('/montres')
+    })
+    .catch((error) => {
+      console.error('Erreur lors de la suppression de la montre', error)
+    })
+}
+
 onMounted(() => {
   MontreId.value = route.params.id
 
@@ -239,7 +220,6 @@ onMounted(() => {
   getBoitiers()
   getTexturesBoitier()
   getPierres()
-  // getBracelets()
   getTexturesBracelet()
 })
 </script>
