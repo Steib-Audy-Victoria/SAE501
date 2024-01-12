@@ -189,6 +189,7 @@ export default {
         })
         .then((response) => {
           console.log(response.data.message)
+          alert('Montre modifié avec succès!')
         })
         .catch((error) => {
           console.error('Erreur lors de la mise à jour de la montre', error)
@@ -204,6 +205,7 @@ export default {
         .delete(`http://localhost:4000/montre/${MontreId}/suppr`)
         .then((response) => {
           console.log(response.data.message)
+          alert('Montre supprimé avec succès!')
           // Rediriger l'utilisateur vers la liste des montres après la suppression
           this.$router.push('/montres')
         })

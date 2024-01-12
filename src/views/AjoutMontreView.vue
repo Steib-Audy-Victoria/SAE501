@@ -138,6 +138,7 @@ export default {
         )
         .then((response) => {
           console.log(response.data.message)
+          alert('Montre ajouté avec succès!')
           // Rediriger l'utilisateur vers la page des montres qu'il a configuré après l'ajout réussi
           this.$router.push('/montres')
         })
