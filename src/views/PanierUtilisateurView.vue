@@ -1,21 +1,30 @@
+<script setup>
+import MyButton from '@/components/elements/MyButton.vue'
+</script>
+
 <template>
-  <div>
-    <h1>Liste du Panier</h1>
+  <div class="ListePanier">
+    <h1 class="ListePanier__titre">Liste du Panier</h1>
 
-    <ul v-if="panier.length > 0">
-      <li v-for="article in panier" :key="article.PanierID">
-        <p><strong>Nom Montre:</strong> {{ article.NomMontre }}</p>
-        <p><strong>Nom Boitier:</strong> {{ article.NomBoitier }}</p>
-        <p><strong>Texture Boitier:</strong> {{ article.TextureBoitier }}</p>
-        <p><strong>Quantité:</strong> {{ article.Quantite }}</p>
-        <p><strong>Prix Total:</strong> {{ article.PrixTotal }} €</p>
+    <div class="ListePanier__liste" v-if="panier.length > 0">
+      <ul class="ListePanier__liste-ul" v-for="article in panier" :key="article.PanierID">
+        <li><strong>Nom Montre:</strong> {{ article.NomMontre }}</li>
+        <li><strong>Nom Boitier:</strong> {{ article.NomBoitier }}</li>
+        <li><strong>Texture Boitier:</strong> {{ article.TextureBoitier }}</li>
+        <li><strong>Quantité:</strong> {{ article.Quantite }}</li>
+        <li><strong>Prix Total:</strong> {{ article.PrixTotal }} €</li>
 
-        <br />
         <!-- Ajout du bouton "Supprimer du Panier" -->
-        <button @click="supprimerDuPanier(article.PanierID)">Supprimer du Panier</button>
-        <hr />
-      </li>
-    </ul>
+        <MyButton
+          class="ListeMontres__liste-ul-button"
+          size="small"
+          variant="rounded"
+          color="rouge"
+          @click="supprimerDuPanier(article.PanierID)"
+          >Supprimer du Panier</MyButton
+        >
+      </ul>
+    </div>
 
     <p v-else>Aucun article dans le panier.</p>
   </div>
@@ -110,3 +119,46 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.ListePanier {
+  display: flex;
+  flex-direction: column;
+
+  &__titre {
+    color: $noir;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem;
+  }
+
+  &__liste {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+
+    &-ul {
+      list-style: none;
+      padding: 1rem;
+      margin: 1rem 2rem;
+      border: 1px solid $gris;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+
+      li {
+        margin-bottom: 5px;
+
+        strong {
+          font-weight: 500;
+        }
+      }
+
+      &-button {
+        margin: 1rem O;
+      }
+    }
+  }
+}
+</style>

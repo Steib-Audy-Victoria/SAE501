@@ -8,8 +8,7 @@ import MyButton from '@/components/elements/MyButton.vue'
     <MyButton class="ListeMontres__btnConf" color="bordeaux"
       ><RouterLink class="ListeMontres__btnConf-link" to="/montres"
         >Montre configurées</RouterLink
-      ></MyButton
-    >
+      ></MyButton>
 
     <div class="ListeMontres__liste">
       <ul class="ListeMontres__liste-ul" v-for="montre in montres" :key="montre.MontreID">
