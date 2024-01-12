@@ -12,11 +12,11 @@ import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader.js'
 
 const canvas = ref(null)
-let controls = null
+let controls,
+  scene,
+  camera,
+  renderer = null
 let clock = new THREE.Clock()
-let scene = null
-let camera = null
-let renderer = null
 let animationId = null
 let aiguilleHeures,
   aiguilleMinutes,
