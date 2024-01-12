@@ -73,11 +73,11 @@ function onLoaded(collada) {
   // Aiguilles
   aiguilleHeures = objects.getObjectByName('aiguille_heures')
   aiguilleHeures.material = new THREE.MeshBasicMaterial({
-    color: 0xffffff
+    color: 0xf0c300
   })
   aiguilleMinutes = objects.getObjectByName('aiguille_minutes')
   aiguilleMinutes.material = new THREE.MeshBasicMaterial({
-    color: 0xffffff
+    color: 0x7a003f
   })
   aiguilleSecondes = objects.getObjectByName('aiguille_secondes')
   aiguilleSecondes.material = new THREE.MeshBasicMaterial({
