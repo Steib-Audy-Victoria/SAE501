@@ -1,27 +1,23 @@
 <template>
-  <div>
-    <h1>Ajouter une Montre</h1>
+  <div class="ajout">
+    <h3 class="ajout__titre">Ajouter une Montre</h3>
 
-    <form @submit.prevent="addWatch">
+    <form class="ajout__form" @submit.prevent="addWatch">
       <!-- Champ pour le nom de la montre -->
-      <label for="NomMontre">Nom de la Montre :</label>
-      <input v-model="newNomMontre" type="text" required />
-
-      <br />
+      <label class="ajout__form-label" for="NomMontre">Nom de la Montre :</label>
+      <input class="ajout__form-input" v-model="newNomMontre" type="text" required />
 
       <!-- Champ pour le boitier -->
-      <label for="BoitierID">Boitier :</label>
-      <select v-model="newBoitierID" required>
+      <label class="ajout__form-label" for="BoitierID">Boitier :</label>
+      <select class="ajout__form-select" v-model="newBoitierID" required>
         <option v-for="boitier in boitiers" :key="boitier.BoitierID" :value="boitier.BoitierID">
           {{ boitier.NomBoitier }}
         </option>
       </select>
 
-      <br />
-
       <!-- Champ pour la texture du boitier -->
-      <label for="TextureBoitierID">Texture du Boîtier :</label>
-      <select v-model="newTextureBoitierID" required>
+      <label class="ajout__form-label" for="TextureBoitierID">Texture du Boîtier :</label>
+      <select class="ajout__form-select" v-model="newTextureBoitierID" required>
         <option
           v-for="textureBoitier in texturesBoitier"
           :key="textureBoitier.TextureBoitierID"
@@ -31,35 +27,17 @@
         </option>
       </select>
 
-      <br />
-
       <!-- Champ pour la pierre -->
-      <label for="PierreID">Pierre :</label>
-      <select v-model="newPierreID" required>
+      <label class="ajout__form-label" for="PierreID">Pierre :</label>
+      <select class="ajout__form-select" v-model="newPierreID" required>
         <option v-for="pierre in pierres" :key="pierre.PierreID" :value="pierre.PierreID">
           {{ pierre.NomPierre }}
         </option>
       </select>
 
-      <br />
-
-      <!-- Champ pour le bracelet
-      <label for="BraceletID">Bracelet :</label>
-      <select v-model="newBraceletID" required>
-        <option
-          v-for="bracelet in bracelets"
-          :key="bracelet.BraceletID"
-          :value="bracelet.BraceletID"
-        >
-          {{ bracelet.NomBracelet }}
-        </option>
-      </select>
-
-      <br /> -->
-
       <!-- Champ pour la texture du bracelet -->
-      <label for="TextureBraceletID">Texture du Bracelet :</label>
-      <select v-model="newTextureBraceletID" required>
+      <label class="ajout__form-label" for="TextureBraceletID">Texture du Bracelet :</label>
+      <select class="ajout__form-select" v-model="newTextureBraceletID" required>
         <option
           v-for="textureBracelet in texturesBracelet"
           :key="textureBracelet.TextureBraceletID"
@@ -69,9 +47,7 @@
         </option>
       </select>
 
-      <br />
-
-      <button type="submit">Ajouter la Montre</button>
+      <button class="ajout__form-button" type="submit">Ajouter la Montre</button>
     </form>
   </div>
 </template>
@@ -172,3 +148,53 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.ajout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__titre {
+    color: $noir;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    &-label {
+      color: $noir;
+      font-weight: 500;
+    }
+
+    &-input,
+    &-select {
+      padding: 0.5rem;
+      border: 1px solid $grisFonce;
+      border-radius: 0.25rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 40%;
+    }
+
+    &-button {
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: 1px solid $grisFonce;
+      border-radius: 0.25rem;
+      background-color: $grisFonce;
+      color: $blanc;
+      font-weight: 500;
+      cursor: pointer;
+      width: 40%;
+    }
+  }
+}
+</style>

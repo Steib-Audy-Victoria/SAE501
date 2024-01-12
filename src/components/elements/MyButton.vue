@@ -22,9 +22,7 @@ const className = computed(() => ({
 </script>
 <template>
   <button class="button" :class="className">
-    <RouterLink class="button__link" to="/">
-      <slot></slot>
-    </RouterLink>
+    <slot></slot>
   </button>
 </template>
 
