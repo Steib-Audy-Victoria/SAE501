@@ -4,7 +4,7 @@ import MyButton from '@/components/elements/MyButton.vue'
 
 <template>
   <div class="ListePanier">
-    <h1 class="ListePanier__titre">Liste du Panier</h1>
+    <h3 class="ListePanier__titre">Liste du Panier</h3>
 
     <div class="ListePanier__liste" v-if="panier.length > 0">
       <ul class="ListePanier__liste-ul" v-for="article in panier" :key="article.PanierID">

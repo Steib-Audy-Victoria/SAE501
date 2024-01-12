@@ -4,7 +4,7 @@ import MyButton from '@/components/elements/MyButton.vue'
 
 <template>
   <div class="Montres">
-    <h1 class="Montres__titre">Liste des Montres Configurées par l'utilisateur</h1>
+    <h3 class="Montres__titre">Liste des Montres Configurées par l'utilisateur</h3>
 
     <div class="Montres__liste">
       <ul class="Montres__liste-ul" v-for="montre in montres" :key="montre.MontreID">

@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <h1>Détails de la Montre</h1>
+    <h3>Détails de la Montre</h3>
 
     <br />
 
