@@ -12,7 +12,7 @@ import MyButton from '@/components/elements/MyButton.vue'
       <li><strong>Nom Boitier :</strong> {{ montre.NomBoitier }}</li>
       <li><strong>Nom Texture du Boitier :</strong> {{ montre.TextureBoitier }}</li>
       <li><strong>Nom Pierre :</strong> {{ montre.NomPierre }}</li>
-      <li><strong>Nom Bracelet :</strong> {{ montre.NomBracelet }}</li>
+      <!-- <li><strong>Nom Bracelet :</strong> {{ montre.NomBracelet }}</li> -->
       <li><strong>Nom Texture du Bracelet :</strong> {{ montre.TextureBracelet }}</li>
       <li><strong>Prix Total :</strong> {{ montre.PrixTotal }} €</li>
 

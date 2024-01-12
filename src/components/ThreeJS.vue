@@ -5,11 +5,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, toRefs, onMounted, onBeforeUnmount } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 import * as THREE from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader.js'
+
+const props = defineProps({
+  TextureBoitier: String,
+  FormeBoitier: String,
+  TextureBracelet: String,
+  NomPierre: String
+})
+
+const proprietes = toRefs(props)
+
+const CouleurPierre = ref([])
 
 const canvas = ref(null)
 let controls,
@@ -18,18 +29,7 @@ let controls,
   renderer = null
 let clock = new THREE.Clock()
 let animationId = null
-let aiguilleHeures,
-  aiguilleMinutes,
-  aiguilleSecondes,
-  boitierRond,
-  //   boitierCarre,
-  Pierre,
-  Bracelet,
-  Fermoir,
-  Bouton
-
-let currentTexture = 'texture-cuir-blanc.jpg'
-let currentTextureBoitierRond = 'background_black02.png'
+let aiguilleHeures, aiguilleMinutes, aiguilleSecondes, Boitier, Pierre, Bracelet, Fermoir, Bouton
 
 const initScene = () => {
   scene = new THREE.Scene()
@@ -85,26 +85,39 @@ function onLoaded(collada) {
   })
 
   // Boitier
-  boitierRond = objects.getObjectByName('boitier_rond')
-  const textureLoaderBoitierRond = new TextureLoader()
-  const textureBoitierRond = textureLoaderBoitierRond.load(
-    `public/images/${currentTextureBoitierRond}`
+
+  if (proprietes.FormeBoitier.value == 'Boitier_rond') {
+    Boitier = objects.getObjectByName('boitier_rond')
+  } else {
+    Boitier = objects.getObjectByName('boitier_carre')
+  }
+  const textureLoaderBoitier = new TextureLoader()
+  const TextureBoitier = textureLoaderBoitier.load(
+    `/images/background_${proprietes.TextureBoitier.value}.png`
   )
-  boitierRond.material = new THREE.MeshBasicMaterial({
-    map: textureBoitierRond
+
+  Boitier.material = new THREE.MeshBasicMaterial({
+    map: TextureBoitier
   })
 
-  //   boitierCarre = objects.getObjectByName('boitier_carre')
-  //   boitierCarre.material = new THREE.MeshBasicMaterial({ color: 0x00ffff })
-
+  // Bouton
   Bouton = objects.getObjectByName('bouton')
   Bouton.material = new THREE.MeshBasicMaterial({
     color: 0xffffff
   })
 
+  // Pierre
+  if (proprietes.NomPierre.value == 'Rubis') {
+    CouleurPierre.value = '#f00'
+  } else if (proprietes.NomPierre.value == 'Diamant') {
+    CouleurPierre.value = '#00f'
+  } else if (proprietes.NomPierre.value == 'Émeraude') {
+    CouleurPierre.value = '#0f0'
+  }
+
   Pierre = objects.getObjectByName('pierre')
   Pierre.material = new THREE.MeshBasicMaterial({
-    color: 0xf50f00
+    color: CouleurPierre.value
   })
 
   let Pierre2 = Pierre.clone()
@@ -118,9 +131,11 @@ function onLoaded(collada) {
   Pierre4.position.x += 18.5
   Pierre4.position.y -= 18.75
 
+  // Bracelet
+
   Bracelet = objects.getObjectByName('bracelet')
   const textureLoader = new TextureLoader()
-  const texture = textureLoader.load(`public/images/${currentTexture}`)
+  const texture = textureLoader.load(`/images/texture-${proprietes.TextureBracelet.value}.jpg`)
   Bracelet.material = new THREE.MeshBasicMaterial({ map: texture })
 
   Fermoir = objects.getObjectByName('fermoir')
@@ -132,8 +147,8 @@ function onLoaded(collada) {
     aiguilleHeures,
     aiguilleMinutes,
     aiguilleSecondes,
-    boitierRond,
     Bouton,
+    Boitier,
     Pierre,
     Pierre2,
     Pierre3,

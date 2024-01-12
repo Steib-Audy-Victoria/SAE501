@@ -43,7 +43,7 @@
 
       <br />
 
-      <!-- Champ pour le bracelet -->
+      <!-- Champ pour le bracelet
       <label for="BraceletID">Bracelet :</label>
       <select v-model="newBraceletID" required>
         <option
@@ -55,7 +55,7 @@
         </option>
       </select>
 
-      <br />
+      <br /> -->
 
       <!-- Champ pour la texture du bracelet -->
       <label for="TextureBraceletID">Texture du Bracelet :</label>
