@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <h3>Détails de la Montre</h3>
+  <div class="preview">
+    <h3 class="preview__titre">Détails de la Montre</h3>
 
-    <br />
-
-    <div v-if="montre">
-      <ThreeJS v-bind="montrePreview" />
+    <div class="preview__oui" v-if="montre">
+      <ThreeJS class="preview__oui-three" v-bind="montrePreview" />
 
       <!-- <p><strong>ID Montre:</strong> {{ montre.MontreID }}</p>
       <p><strong>Nom Montre:</strong> {{ montre.NomMontre }}</p>
@@ -16,14 +14,13 @@
       <p><strong>Texture Bracelet:</strong> {{ montre.TextureBracelet }}</p>
       <p><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</p> -->
 
-      <br />
-
       <!-- Formulaire de modification -->
 
-      <form @submit.prevent="updateWatch">
+      <form class="preview__oui-form" @submit.prevent="updateWatch">
         <!-- Champ pour le nom de la montre-->
-        <label for="NomMontre">Nouveau Nom de la Montre :</label>
+        <label class="preview__oui-form-label" for="NomMontre">Nouveau Nom de la Montre :</label>
         <input
+          class="preview__oui-form-input"
           v-model="montrePreview.NomMontre"
           type="text"
           name="NomMontre"
@@ -31,21 +28,26 @@
           required
         />
 
-        <br />
-
         <!-- Champ pour le boitier-->
-        <label for="FormeBoitier">Nouveau Boitier :</label>
-        <select v-model="montrePreview.FormeBoitier" name="FormeBoitier" id="FormeBoitier" required>
+        <label class="preview__oui-form-label" for="FormeBoitier">Nouveau Boitier :</label>
+        <select
+          class="preview__oui-form-select"
+          v-model="montrePreview.FormeBoitier"
+          name="FormeBoitier"
+          id="FormeBoitier"
+          required
+        >
           <option v-for="b in FormeBoitier" :key="b.BoitierID" :value="b.FormeBoitier">
             {{ b.NomBoitier }}
           </option>
         </select>
 
-        <br />
-
         <!-- Champ pour la texture du boitier-->
-        <label for="TextureBoitier">Nouvelle Texture du Boîtier :</label>
+        <label class="preview__oui-form-label" for="TextureBoitier"
+          >Nouvelle Texture du Boîtier :</label
+        >
         <select
+          class="preview__oui-form-select"
           v-model="montrePreview.TextureBoitier"
           name="TextureBoitier"
           id="TextureBoitier"
@@ -56,21 +58,24 @@
           </option>
         </select>
 
-        <br />
-
         <!-- Champ pour les pierre -->
-        <label for="NomPierre">Pierre :</label>
-        <select v-model="montrePreview.NomPierre" name="NomPierre" id="NomPierre" required>
+        <label class="preview__oui-form-label" for="NomPierre">Pierre :</label>
+        <select
+          class="preview__oui-form-select"
+          v-model="montrePreview.NomPierre"
+          name="NomPierre"
+          id="NomPierre"
+          required
+        >
           <option v-for="p in NomPierre" :key="p.PierreID" :value="p.NomPierre">
             {{ p.NomPierre }}
           </option>
         </select>
 
-        <br />
-
         <!-- Champ pour la texture du bracelet -->
-        <label for="TextureBracelet">Texture du Bracelet :</label>
+        <label class="preview__oui-form-label" for="TextureBracelet">Texture du Bracelet :</label>
         <select
+          class="preview__oui-form-select"
           v-model="montrePreview.TextureBracelet"
           name="TextureBracelet"
           id="TextureBracelet"
@@ -85,18 +90,14 @@
           </option>
         </select>
 
-        <br />
+        <!-- <button class="preview__oui-form-button"  type="submit">Enregistrer les modifications</button> -->
 
-        <button type="submit">Enregistrer les modifications</button>
+        <!-- <button class="preview__oui-form-button" type="button" @click="deleteWatch">Supprimer la montre</button> -->
       </form>
-
-      <br />
-
-      <button type="button" @click="deleteWatch">Supprimer la montre</button>
     </div>
 
-    <div v-else>
-      <p>Aucune montre trouvée avec cet ID.</p>
+    <div class="preview__non" v-else>
+      <p class="preview__non-p">Aucune montre trouvée avec cet ID.</p>
     </div>
   </div>
 </template>
@@ -222,3 +223,104 @@ onMounted(() => {
   getTexturesBracelet()
 })
 </script>
+
+<style lang="scss">
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__titre {
+    color: $noir;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem;
+  }
+
+  &__oui {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &-three {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-liste {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+
+      &-p {
+        color: $noir;
+
+        strong {
+          font-weight: 500;
+        }
+      }
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+
+      &-label {
+        color: $noir;
+        font-weight: 500;
+      }
+
+      &-input,
+      &-select {
+        padding: 0.5rem;
+        border: 1px solid $grisFonce;
+        border-radius: 0.25rem;
+        font-weight: 500;
+        cursor: pointer;
+        width: 40%;
+      }
+
+      &-button {
+        margin: 1rem 0;
+        padding: 0.5rem;
+        border: 1px solid $grisFonce;
+        border-radius: 0.25rem;
+        background-color: $grisFonce;
+        color: $blanc;
+        font-weight: 500;
+        cursor: pointer;
+        width: 40%;
+      }
+    }
+
+    &-btnDel {
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: 1px solid $grisFonce;
+      border-radius: 0.25rem;
+      background-color: $grisFonce;
+      color: $blanc;
+      font-weight: 500;
+      cursor: pointer;
+      width: 40%;
+    }
+  }
+
+  &__non {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    &-text {
+      color: $noir;
+      font-weight: 500;
+    }
+  }
+}
+</style>
