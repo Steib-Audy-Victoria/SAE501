@@ -70,12 +70,24 @@ const className = computed(() => ({
   // background
   &.-rouge {
     background-color: $rouge;
+
+    &:hover {
+      background-color: $blanc;
+    }
   }
   &.-bordeaux {
     background-color: $bordeaux;
+
+    &:hover {
+      background-color: $blanc;
+    }
   }
   &.-grisFonce {
     background-color: $grisFonce;
+
+    &:hover {
+      background-color: $blanc;
+    }
   }
 
   // text

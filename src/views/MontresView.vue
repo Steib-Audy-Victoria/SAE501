@@ -1,29 +1,45 @@
+<script setup>
+import MyButton from '@/components/elements/MyButton.vue'
+</script>
+
 <template>
-  <div>
-    <h1>Liste des Montres Configurées par l'utilisateur</h1>
+  <div class="Montres">
+    <h1 class="Montres__titre">Liste des Montres Configurées par l'utilisateur</h1>
 
-    <br />
-    <li v-for="montre in montres" :key="montre.MontreID">
-      <p><strong>ID Montre:</strong> {{ montre.MontreID }}</p>
-      <p><strong>Nom Montre:</strong> {{ montre.NomMontre }}</p>
-      <p><strong>Nom Boitier:</strong> {{ montre.NomBoitier }}</p>
-      <p><strong>Nom Texture du Boitier:</strong> {{ montre.TextureBoitier }}</p>
-      <p><strong>Nom Pierre:</strong> {{ montre.NomPierre }}</p>
-      <!-- <p><strong>Nom Bracelet:</strong> {{ montre.NomBracelet }}</p> -->
-      <p><strong>Nom Texture du Bracelet:</strong> {{ montre.TextureBracelet }}</p>
-      <p><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</p>
-      <RouterLink :to="`/montre/${montre.MontreID}`">Voir la montre</RouterLink>
-      <br />
-      <RouterLink :to="`/montre2/${montre.MontreID}`"
-        >Voir la prévisualisation de la montre</RouterLink
-      >
+    <div class="Montres__liste">
+      <ul class="Montres__liste-ul" v-for="montre in montres" :key="montre.MontreID">
+        <li><strong>ID Montre:</strong> {{ montre.MontreID }}</li>
+        <li><strong>Nom Montre:</strong> {{ montre.NomMontre }}</li>
+        <li><strong>Nom Boitier:</strong> {{ montre.NomBoitier }}</li>
+        <li><strong>Nom Texture du Boitier:</strong> {{ montre.TextureBoitier }}</li>
+        <li><strong>Nom Pierre:</strong> {{ montre.NomPierre }}</li>
+        <!-- <li><strong>Nom Bracelet:</strong> {{ montre.NomBracelet }}</li> -->
+        <li><strong>Nom Texture du Bracelet:</strong> {{ montre.TextureBracelet }}</li>
+        <li><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</li>
 
-      <br />
-      <!-- Ajout du bouton "Ajouter au Panier" -->
-      <button @click="ajouterAuPanier(montre.MontreID)">Ajouter au Panier</button>
+        <MyButton class="Montres__liste-button" size="small" variant="rounded">
+          <RouterLink class="Montres__liste-button-link" :to="`/montre/${montre.MontreID}`">
+            Voir la montre</RouterLink
+          >
+        </MyButton>
+        <MyButton class="Montres__liste-button" size="small" variant="rounded">
+          <RouterLink class="Montres__liste-button-link" :to="`/montre2/${montre.MontreID}`">
+            Voir la prévisualisation de la montre
+          </RouterLink>
+        </MyButton>
 
-      <hr />
-    </li>
+        <!-- Ajout du bouton "Ajouter au Panier" -->
+        <MyButton
+          class="Montres__liste-button"
+          size="small"
+          variant="rounded"
+          color="rouge"
+          @click="ajouterAuPanier(montre.MontreID)"
+        >
+          Ajouter au Panier
+        </MyButton>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -102,4 +118,50 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.Montres {
+  &__titre {
+    color: $noir;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem;
+  }
+
+  &__liste {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+
+    &-ul {
+      list-style: none;
+      padding: 1rem;
+      margin: 1rem 2rem;
+      border: 1px solid $gris;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+
+      li {
+        margin-bottom: 5px;
+
+        strong {
+          font-weight: 500;
+        }
+      }
+    }
+
+    &-button {
+      max-width: 200px;
+      &-link {
+        text-decoration: none;
+        color: $blanc;
+
+        &:hover {
+          color: $noir;
+        }
+      }
+    }
+  }
+}
+</style>
