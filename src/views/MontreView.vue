@@ -12,7 +12,6 @@
       <p><strong>Boitier:</strong> {{ montre.NomBoitier }}</p>
       <p><strong>Texture Boitier:</strong> {{ montre.TextureBoitier }}</p>
       <p><strong>Pierre:</strong> {{ montre.NomPierre }}</p>
-      <p><strong>Bracelet:</strong> {{ montre.NomBracelet }}</p>
       <p><strong>Texture Bracelet:</strong> {{ montre.TextureBracelet }}</p>
       <p><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</p>
 
@@ -61,20 +60,6 @@
 
         <br />
 
-        <!-- Champ pour le bracelet -->
-        <label for="BraceletID">Bracelet :</label>
-        <select v-model="newBraceletID" required>
-          <option
-            v-for="bracelet in bracelets"
-            :key="bracelet.BraceletID"
-            :value="bracelet.BraceletID"
-          >
-            {{ bracelet.NomBracelet }}
-          </option>
-        </select>
-
-        <br />
-
         <!-- Champ pour la texture du bracelet -->
         <label for="TextureBraceletID">Texture du Bracelet :</label>
         <select v-model="newTextureBraceletID" required>
@@ -114,12 +99,10 @@ export default {
       newBoitierID: null,
       newTextureBoitierID: null,
       newPierreID: null,
-      newBraceletID: null,
       newTextureBraceletID: null,
       boitiers: [],
       texturesBoitier: [],
       pierres: [],
-      bracelets: [],
       texturesBracelet: []
     }
   },
@@ -204,7 +187,6 @@ export default {
           BoitierID: this.newBoitierID,
           TextureBoitierID: this.newTextureBoitierID,
           PierreID: this.newPierreID,
-          BraceletID: this.newBraceletID,
           TextureBraceletID: this.newTextureBraceletID
         })
         .then((response) => {

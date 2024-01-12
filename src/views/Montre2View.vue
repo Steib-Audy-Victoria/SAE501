@@ -7,8 +7,6 @@
     <div v-if="montre">
       <ThreeJS v-bind="montrePreview" />
 
-      <p>{{ montrePreview }}</p>
-
       <!-- <p><strong>ID Montre:</strong> {{ montre.MontreID }}</p>
       <p><strong>Nom Montre:</strong> {{ montre.NomMontre }}</p>
       <p><strong>Boitier:</strong> {{ montre.NomBoitier }}</p>
@@ -115,7 +113,7 @@ const route = useRoute()
 const MontreId = ref([])
 
 const montre = ref(null)
-const montrePreview = ref({})
+const montrePreview = ref([])
 
 const NomMontre = ref('')
 const FormeBoitier = ref([])
@@ -187,16 +185,17 @@ const updateWatch = () => {
   axios
     .put(`http://localhost:4000/montre/${route.params.id}/modif2`, {
       NomMontre: NomMontre.value,
-      FormeBoitier: montrePreview.value,
-      TextureBoitier: montrePreview.value,
-      NomPierre: montrePreview.value,
-      TextureBracelet: montrePreview.value
+      FormeBoitier: montrePreview.BoitierID,
+      TextureBoitier: montrePreview.TextureBoitierID,
+      NomPierre: montrePreview.PierreID,
+      TextureBracelet: montrePreview.TextureBraceletID
     })
     .then((response) => {
       console.log(response.data.message)
     })
     .catch((error) => {
       console.error('Erreur lors de la mise à jour de la montre', error)
+      console.log(montrePreview)
     })
 }
 
