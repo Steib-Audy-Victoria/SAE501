@@ -38,6 +38,12 @@ const router = createRouter({
       beforeEnter: authGuard
     },
     {
+      path: '/montre2/:id',
+      name: 'montre2',
+      component: () => import('../views/Montre2View.vue'),
+      beforeEnter: authGuard
+    },
+    {
       path: '/ajout',
       name: 'ajout',
       component: () => import('../views/AjoutMontreView.vue'),

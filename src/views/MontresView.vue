@@ -13,6 +13,10 @@
       <p><strong>Nom Texture du Bracelet:</strong> {{ montre.TextureBracelet }}</p>
       <p><strong>Prix Total:</strong> {{ montre.PrixTotal }} €</p>
       <RouterLink :to="`/montre/${montre.MontreID}`">Voir la montre</RouterLink>
+      <br />
+      <RouterLink :to="`/montre2/${montre.MontreID}`"
+        >Voir la prévisualisation de la montre</RouterLink
+      >
 
       <br />
       <!-- Ajout du bouton "Ajouter au Panier" -->

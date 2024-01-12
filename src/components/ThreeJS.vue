@@ -73,7 +73,7 @@ function onLoaded(collada) {
   // Aiguilles
   aiguilleHeures = objects.getObjectByName('aiguille_heures')
   aiguilleHeures.material = new THREE.MeshBasicMaterial({
-    color: 0x4f4f4f
+    color: 0xffffff
   })
   aiguilleMinutes = objects.getObjectByName('aiguille_minutes')
   aiguilleMinutes.material = new THREE.MeshBasicMaterial({
@@ -85,6 +85,14 @@ function onLoaded(collada) {
   })
 
   // Boitier
+  // console.log('FormeBoitier:', proprietes.FormeBoitier.value)
+  // console.log('Boitier:', Boitier)
+
+  // if (proprietes.FormeBoitier.value == 'Boitier_rond') {
+  //   Boitier = objects.getObjectByName('boitier_rond')
+  // } else if (proprietes.FormeBoitier.value == 'Boitier_carre') {
+  //   Boitier = objects.getObjectByName('boitier_carre')
+  // }
 
   if (proprietes.FormeBoitier.value == 'Boitier_rond') {
     Boitier = objects.getObjectByName('boitier_rond')
