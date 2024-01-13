@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref, toRefs, onMounted, onUpdated, onBeforeUnmount } from 'vue'
+import { ref, reactive, toRefs, onMounted, onUpdated, onBeforeUnmount } from 'vue'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 import * as THREE from 'three'
@@ -21,6 +21,10 @@ const props = defineProps({
 const proprietes = toRefs(props)
 
 const CouleurPierre = ref([])
+
+const state = reactive({
+  illuminating: false
+})
 
 const canvas = ref(null)
 let controls,
@@ -60,9 +64,31 @@ const updateClock = () => {
   if (aiguilleSecondes) aiguilleSecondes.rotation.z = -secondsRotation
 }
 
+const illuminateAiguilles = () => {
+  if (!state.illuminating) {
+    state.illuminating = true
+
+    // Désactive l'illumination après 10 secondes
+    setTimeout(() => {
+      state.illuminating = false
+    }, 10000)
+  }
+}
+
 const animate = () => {
   let dt = clock.getDelta()
   updateClock()
+
+  if (aiguilleHeures) {
+    aiguilleHeures.material.color.set(state.illuminating ? 0xffffff : 0xf0c300)
+  }
+  if (aiguilleMinutes) {
+    aiguilleMinutes.material.color.set(state.illuminating ? 0xffffff : 0x7a003f)
+  }
+  if (aiguilleSecondes) {
+    aiguilleSecondes.material.color.set(state.illuminating ? 0xffffff : 0xf50f00)
+  }
+
   animationId = requestAnimationFrame(animate)
   renderer.render(scene, camera)
 }
@@ -113,6 +139,10 @@ function onLoaded(collada) {
   Bouton.material = new THREE.MeshBasicMaterial({
     color: 0xffffff
   })
+
+  Bouton.onClick = () => {
+    illuminateAiguilles()
+  }
 
   // Pierre
   if (proprietes.NomPierre.value == 'Rubis') {
